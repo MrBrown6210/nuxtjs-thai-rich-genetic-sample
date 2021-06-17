@@ -1,4 +1,5 @@
 module.exports = {
+  verbose: true,
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -15,4 +16,5 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
   ],
+  // transformIgnorePatterns: ["node_modules/(?!vis-data|@amcharts)"],
 }
