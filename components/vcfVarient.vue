@@ -1,71 +1,72 @@
 <template>
   <div>
-    <div>hello</div>
-    <div ref="varient"></div>
+    <div>Varient Type</div>
+    <v-chart class="chart" :option="option" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+<script>
+import VChart, { THEME_KEY } from "vue-echarts";
 
-am4core.useTheme(am4themes_animated);
-
-interface varient {
-  type: string
-  original: number
-  filtered: number
-}
-
-export default defineComponent({
-  setup() {
-    let varient: any
-    return { varient }
+export default {
+  components: {
+    VChart,
   },
-  mounted() {
-    this.renderVarientChart()
+  provide: {
+    [THEME_KEY]: "dark",
   },
-  methods: {
-    renderVarientChart() {
-      console.log(this.$refs.varient)
-      let chart = am4core.create(this.$refs.varient as HTMLElement, am4charts.XYChart);
-
-    chart.paddingRight = 20;
-
-    let data = [];
-    let visits = 10;
-    for (let i = 1; i < 5; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-      data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
-    }
-
-    chart.data = data;
-
-    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.grid.template.location = 0;
-
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip!.disabled = true
-    valueAxis.renderer.minWidth = 35;
-
-    let series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.dateX = "date";
-    series.dataFields.valueY = "value";
-
-    series.tooltipText = "{valueY.value}";
-    chart.cursor = new am4charts.XYCursor();
-
-    // let scrollbarX = new am4charts.XYChartScrollbar();
-    // scrollbarX.series.push(series);
-    // chart.scrollbarX = scrollbarX;
-
-      this.varient = chart
-    }
+  data() {
+    return {
+      option: {
+        title: {
+          text: "Traffic Sources",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "item",
+          formatter: "{a} <br/>{b} : {c} ({d}%)",
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+          data: [
+            "Direct",
+            "Email",
+            "Ad Networks",
+            "Video Ads",
+            "Search Engines",
+          ],
+        },
+        series: [
+          {
+            name: "Traffic Sources",
+            type: "pie",
+            radius: "55%",
+            center: ["50%", "60%"],
+            data: [
+              { value: 335, name: "Direct" },
+              { value: 310, name: "Email" },
+              { value: 234, name: "Ad Networks" },
+              { value: 135, name: "Video Ads" },
+              { value: 1548, name: "Search Engines" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      },
+    };
   },
-  beforeDestroy() {
-    this.varient?.dispose()
-  }
-})
+};
 </script>
+
+<style scoped>
+.chart {
+  height: 400px;
+}
+</style>
