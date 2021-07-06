@@ -18,9 +18,7 @@ export default {
   ssr: true,
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/echart.js' }
-  ],
+  plugins: [{ src: '~/plugins/echart.js' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -31,7 +29,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,7 +49,7 @@ export default {
       'echarts/renderers',
       'echarts/charts',
       'echarts/components',
-      'zrender'
-    ]
-  }
+      'zrender',
+    ],
+  },
 }
