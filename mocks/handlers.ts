@@ -8,18 +8,18 @@ export const handlers = [
       ctx.json([
         {
           type: 'SNPs',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
+          original: 6819,
+          filtered: 12481,
         },
         {
           type: 'detection',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
+          original: 5128,
+          filtered: 4091,
         },
         {
           type: 'insertion',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
+          original: 10049,
+          filtered: 5918,
         }
       ])
     )

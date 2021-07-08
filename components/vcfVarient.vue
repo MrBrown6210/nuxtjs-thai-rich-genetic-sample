@@ -1,90 +1,42 @@
 <template>
   <div>
-    <p v-if="$fetchState.pending">Fetching mountains...</p>
+    <p v-if="$fetchState.pending">Fetching Varient Chart...</p>
     <p v-else-if="$fetchState.error">An error occurred :(</p>
     <div v-else>
-      <v-chart autoresize class="chart" :option="option" />
+      <div ref="vcf" id="vcf-chart" class="w-screen h-56" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 
-import VChart, { THEME_KEY } from "vue-echarts";
+import * as echarts from 'echarts';
+import { Varient } from '@/types/vcf'
+import { VarientChart } from '@/utils/vcf-chart'
 import { defineComponent, onMounted, reactive, Ref, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
-interface Varient {
-  type: string
-  original: number
-  filtered: number
-}
-
 export default defineComponent ({
-  components: {
-    VChart,
-  },
-  provide: {
-    // [THEME_KEY]: "dark",
-  },
-  setup() {
+  setup(props, context) {
     const { $axios } = useContext()
-    const varients: Ref<Varient[]> = ref([
-      {
-        type: 'test',
-        original: 200,
-        filtered: 300
-      }
-    ])
-    const option = {
-      title: {
-        text: "Varient Type",
-        left: "center",
-      },
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: { type: 'shadow' }
-      },
-      series: [
-        {
-          data: [200, 200],
-          type: 'bar'
-        },
-        {
-          data: [200],
-          type: 'bar'
-        }
-      ],
-      xAxis: {
-        type: 'category',
-        // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        data: ["test"]
-      },
-      yAxis: {
-          type: 'value',
-      },
-    }
+    let chart: echarts.ECharts | null = null
+    const vcf = ref(null)
+    const varientChart = new VarientChart()
+    const option = ref(varientChart.option)
 
-    const updateChart = () => {
-      console.log('update chart')
-      option.xAxis.data = []
-      option.series[0].data = []
-      option.series[1].data = []
-      varients.value.forEach(varient => {
-        option.xAxis.data.push(varient.type)
-        option.series[0].data.push(varient.original)
-        option.series[1].data.push(varient.filtered)
-      })
-    }
+    onMounted(() => {
+      const chartDOM = vcf.value
+      console.log('DOM', chartDOM)
+      chart = echarts.init(chartDOM!)
+      chart?.setOption(option.value)
+    })
 
     const { fetch, fetchState } = useFetch(async () => {
       console.log('fetch')
-      console.log(fetchState)
       const data = await $axios.$get<Varient[]>('varients/dashboard')
-      varients.value = data
-      updateChart()
+      varientChart.updateVarients(data)
     })
 
-    return { option, varients, updateChart }
+    return { option, vcf }
   },
 });
 </script>
