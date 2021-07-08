@@ -18,7 +18,7 @@ export default {
   ssr: true,
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/echart.js' }],
+  plugins: ['~/plugins/echart.js', '~/plugins/msw.client.ts', '~/plugins/msw.server.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -39,7 +39,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.API_URL || 'http://msw.local',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -52,4 +54,8 @@ export default {
       'zrender',
     ],
   },
+  env: {
+    API_URL: process.env.API_URL || 'http://msw.local',
+    DISABLED_MOCK: process.env.API_URL ? true : false
+  }
 }

@@ -9,8 +9,9 @@
 </template>
 
 <script lang="ts">
+
 import VChart, { THEME_KEY } from "vue-echarts";
-import { defineComponent, onMounted, reactive, Ref, ref, useFetch } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, reactive, Ref, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 interface Varient {
   type: string
@@ -26,7 +27,8 @@ export default defineComponent ({
     // [THEME_KEY]: "dark",
   },
   setup() {
-    const varients = ref([
+    const { $axios } = useContext()
+    const varients: Ref<Varient[]> = ref([
       {
         type: 'test',
         original: 200,
@@ -74,26 +76,11 @@ export default defineComponent ({
       })
     }
 
-    const { fetch, fetchState } = useFetch(() => {
+    const { fetch, fetchState } = useFetch(async () => {
       console.log('fetch')
       console.log(fetchState)
-      varients.value = [
-        {
-          type: 'SNPs',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
-        },
-        {
-          type: 'detection',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
-        },
-        {
-          type: 'insertion',
-          original: Math.floor(Math.random() * 12000),
-          filtered: Math.floor(Math.random() * 12000),
-        }
-      ]
+      const data = await $axios.$get<Varient[]>('varients/dashboard')
+      varients.value = data
       updateChart()
     })
 
