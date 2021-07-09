@@ -7,6 +7,7 @@ import {
   ToolboxComponent,
   TooltipComponent,
   LegendComponent,
+  DatasetComponent,
 } from 'echarts/components'
 
 import Vue from 'vue'
@@ -20,6 +21,7 @@ use([
   TooltipComponent,
   ToolboxComponent,
   LegendComponent,
+  DatasetComponent,
   PieChart,
   BarChart
 ])

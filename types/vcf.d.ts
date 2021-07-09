@@ -22,3 +22,22 @@ export interface VarientChartOption {
       type: string;
   }[];
 }
+
+export interface AlleleChartOption {
+  title?: {
+      text: string;
+      left: string;
+  };
+  legend: {};
+  tooltip: {};
+  dataset: {
+      source: (string | number)[][];
+  };
+  xAxis: {
+      type: string;
+  };
+  yAxis: {};
+  series: {
+      type: string;
+  }[];
+}

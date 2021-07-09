@@ -1,20 +1,24 @@
-import { Varient, VarientChartOption } from "~/types/vcf"
+import { Varient, AlleleChartOption } from "~/types/vcf"
 
-export class VarientChart {
-  option: VarientChartOption
+export class AlleleChart {
+  option: AlleleChartOption
   constructor() {
     this.option = {
       legend: {},
       tooltip: {},
       dataset: {
           source: [
-              ['product', '2015', '2016', '2017'],
+              ['type', 'Original', 'Filtered'],
               ['Matcha Latte', 43.3, 85.8, 93.7],
               ['Milk Tea', 83.1, 73.4, 55.1],
           ]
       },
       xAxis: {type: 'category'},
-      yAxis: {},
+      yAxis: {
+        name: 'Numbrt of variants',
+        nameLocation: 'middle',
+        nameGap: 80
+      },
       // Declare several bar series, each will be mapped
       // to a column of dataset.source by default.
       series: [
@@ -32,7 +36,6 @@ export class VarientChart {
 
     varients.forEach(varient => {
       const data = [varient.type, varient.original, varient.filtered]
-      console.log(data)
       this.option.dataset.source.push(data)
     })
   }

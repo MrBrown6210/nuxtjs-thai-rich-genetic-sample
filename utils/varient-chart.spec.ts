@@ -1,14 +1,10 @@
-import { VarientChart } from './vcf-chart'
+import { VarientChart } from './varient-chart'
 describe('Varient Type Chart', () => {
 
   let chart: VarientChart
   beforeEach(() => {
     chart = new VarientChart()
   })
-
-  // it('should have title', () => {
-  //   expect(chart.option.title).toBeDefined()
-  // })
 
   it('should default data have simple data', () => {
     const option = chart.option
