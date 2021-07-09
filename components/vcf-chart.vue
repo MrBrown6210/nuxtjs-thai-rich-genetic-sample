@@ -1,10 +1,7 @@
 <template>
   <div>
-    <p v-if="$fetchState.pending">Fetching Varient Chart...</p>
-    <p v-else-if="$fetchState.error">An error occurred :(</p>
-    <div v-else>
-      <div ref="vcf" id="vcf-chart" class="w-screen h-56" />
-    </div>
+    <!-- <button @click="$fetch" class="border-2">fetch</button> -->
+    <div ref="vcf" id="vcf-chart" class="w-screen h-56" />
   </div>
 </template>
 
@@ -13,7 +10,7 @@
 import * as echarts from 'echarts';
 import { Varient } from '@/types/vcf'
 import { VarientChart } from '@/utils/vcf-chart'
-import { defineComponent, onMounted, reactive, Ref, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, reactive, Ref, ref, useContext, useFetch, watch } from '@nuxtjs/composition-api'
 
 export default defineComponent ({
   setup(props, context) {
@@ -25,14 +22,18 @@ export default defineComponent ({
 
     onMounted(() => {
       const chartDOM = vcf.value
-      console.log('DOM', chartDOM)
       chart = echarts.init(chartDOM!)
+    })
+
+    watch(option, () => {
       chart?.setOption(option.value)
     })
 
     const { fetch, fetchState } = useFetch(async () => {
       console.log('fetch')
+      chart?.showLoading()
       const data = await $axios.$get<Varient[]>('varients/dashboard')
+      chart?.hideLoading()
       varientChart.updateVarients(data)
     })
 

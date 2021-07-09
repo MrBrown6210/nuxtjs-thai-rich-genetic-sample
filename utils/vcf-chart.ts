@@ -4,42 +4,36 @@ export class VarientChart {
   option: VarientChartOption
   constructor() {
     this.option = {
-      title: {
-        text: "Varient Type",
-        left: "center",
+      legend: {},
+      tooltip: {},
+      dataset: {
+          source: [
+              ['product', '2015', '2016', '2017'],
+              ['Matcha Latte', 43.3, 85.8, 93.7],
+              ['Milk Tea', 83.1, 73.4, 55.1],
+          ]
       },
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: { type: 'shadow' }
-      },
+      xAxis: {type: 'category'},
+      yAxis: {},
+      // Declare several bar series, each will be mapped
+      // to a column of dataset.source by default.
       series: [
-        {
-          data: [200, 200],
-          type: 'bar'
-        },
-        {
-          data: [200],
-          type: 'bar'
-        }
-      ],
-      xAxis: {
-        type: 'category',
-        data: ["test"]
-      },
-      yAxis: {
-          type: 'value',
-      },
+          {type: 'bar'},
+          {type: 'bar'}
+      ]
     }
   }
 
   updateVarients(varients: Varient[]) {
-    this.option.xAxis.data = []
-    this.option.series[0].data = []
-    this.option.series[1].data = []
+    this.option.dataset.source = []
+
+    const heads = ['type', 'Original', 'Filtered']
+    this.option.dataset.source.push(heads)
+
     varients.forEach(varient => {
-      this.option.xAxis.data.push(varient.type)
-      this.option.series[0].data.push(varient.original)
-      this.option.series[1].data.push(varient.filtered)
+      const data = [varient.type, varient.original, varient.filtered]
+      console.log(data)
+      this.option.dataset.source.push(data)
     })
   }
 

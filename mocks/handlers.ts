@@ -5,6 +5,7 @@ const API_URL = process.env.API_URL
 export const handlers = [
   rest.get(`${API_URL}/varients/dashboard`, (req, res, ctx) => {
     return res(
+      ctx.delay(),
       ctx.json([
         {
           type: 'SNPs',

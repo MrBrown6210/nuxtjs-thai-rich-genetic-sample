@@ -5,25 +5,20 @@ export interface Varient {
 }
 
 export interface VarientChartOption {
-  title: {
+  title?: {
       text: string;
       left: string;
   };
-  tooltip: {
-      trigger: string;
-      axisPointer: {
-          type: string;
-      };
+  legend: {};
+  tooltip: {};
+  dataset: {
+      source: (string | number)[][];
   };
-  series: {
-      data: number[];
-      type: string;
-  }[];
   xAxis: {
       type: string;
-      data: string[];
   };
-  yAxis: {
+  yAxis: {};
+  series: {
       type: string;
-  };
+  }[];
 }

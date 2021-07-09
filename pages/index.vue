@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vcf-varient jest="Variant Types"></vcf-varient>
+    <vcf-chart jest="Variant Types"></vcf-chart>
     <div jest="Allele Frequency"></div>
     <div jest="Missingness"></div>
     <div jest="Base Changes & Transition"></div>
