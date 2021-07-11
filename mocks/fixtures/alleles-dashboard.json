@@ -1,0 +1,236 @@
+[
+  {
+    "from": "original",
+    "value": 1398003,
+    "log": 14.15055535,
+    "range": "0.00-0.05"
+  },
+  {
+    "from": "original",
+    "value": 130569,
+    "log": 11.7796571,
+    "range": "0.05-0.10"
+  },
+  {
+    "from": "original",
+    "value": 76931,
+    "log": 11.2506642,
+    "range": "0.10-0.15"
+  },
+  {
+    "from": "original",
+    "value": 70526,
+    "log": 11.16373672,
+    "range": "0.15-0.20"
+  },
+  {
+    "from": "original",
+    "value": 55755,
+    "log": 10.92872237,
+    "range": "0.20-0.25"
+  },
+  {
+    "from": "original",
+    "value": 29755,
+    "log": 10.30075246,
+    "range": "0.25-0.30"
+  },
+  {
+    "from": "original",
+    "value": 56297,
+    "log": 10.93839653,
+    "range": "0.30-0.35"
+  },
+  {
+    "from": "original",
+    "value": 32413,
+    "log": 10.38631486,
+    "range": "0.35-0.40"
+  },
+  {
+    "from": "original",
+    "value": 23204,
+    "log": 10.05207996,
+    "range": "0.40-0.45"
+  },
+  {
+    "from": "original",
+    "value": 83017,
+    "log": 11.32680069,
+    "range": "0.45-0.50"
+  },
+  {
+    "from": "original",
+    "value": 16511,
+    "log": 9.711782104,
+    "range": "0.50-0.55"
+  },
+  {
+    "from": "original",
+    "value": 27327,
+    "log": 10.2156305,
+    "range": "0.55-0.60"
+  },
+  {
+    "from": "original",
+    "value": 19523,
+    "log": 9.879348537,
+    "range": "0.60-0.65"
+  },
+  {
+    "from": "original",
+    "value": 36171,
+    "log": 10.49601297,
+    "range": "0.65-0.70"
+  },
+  {
+    "from": "original",
+    "value": 31343,
+    "log": 10.35274624,
+    "range": "0.70-0.75"
+  },
+  {
+    "from": "original",
+    "value": 28456,
+    "log": 10.25611431,
+    "range": "0.75-0.80"
+  },
+  {
+    "from": "original",
+    "value": 29676,
+    "log": 10.29809392,
+    "range": "0.80-0.85"
+  },
+  {
+    "from": "original",
+    "value": 25079,
+    "log": 10.12978612,
+    "range": "0.85-0.90"
+  },
+  {
+    "from": "original",
+    "value": 19888,
+    "log": 9.897871814,
+    "range": "0.90-0.95"
+  },
+  {
+    "from": "original",
+    "value": 198089,
+    "log": 12.1964717,
+    "range": "0.95-1.00"
+  },
+  {
+    "from": "filtered",
+    "value": 6261,
+    "log": 8.742095196,
+    "range": "0.00-0.05"
+  },
+  {
+    "from": "filtered",
+    "value": 28960,
+    "log": 10.27367085,
+    "range": "0.05-0.10"
+  },
+  {
+    "from": "filtered",
+    "value": 16385,
+    "log": 9.704121561,
+    "range": "0.10-0.15"
+  },
+  {
+    "from": "filtered",
+    "value": 11861,
+    "log": 9.381010986,
+    "range": "0.15-0.20"
+  },
+  {
+    "from": "filtered",
+    "value": 9451,
+    "log": 9.153875835,
+    "range": "0.20-0.25"
+  },
+  {
+    "from": "filtered",
+    "value": 7994,
+    "log": 8.986446539,
+    "range": "0.25-0.30"
+  },
+  {
+    "from": "filtered",
+    "value": 6945,
+    "log": 8.845777255,
+    "range": "0.30-0.35"
+  },
+  {
+    "from": "filtered",
+    "value": 6178,
+    "log": 8.728749873,
+    "range": "0.35-0.40"
+  },
+  {
+    "from": "filtered",
+    "value": 5714,
+    "log": 8.650674583,
+    "range": "0.40-0.45"
+  },
+  {
+    "from": "filtered",
+    "value": 5130,
+    "log": 8.542860938,
+    "range": "0.45-0.50"
+  },
+  {
+    "from": "filtered",
+    "value": 5234,
+    "log": 8.562931083,
+    "range": "0.50-0.55"
+  },
+  {
+    "from": "filtered",
+    "value": 5286,
+    "log": 8.572817095,
+    "range": "0.55-0.60"
+  },
+  {
+    "from": "filtered",
+    "value": 5527,
+    "log": 8.617400452,
+    "range": "0.60-0.65"
+  },
+  {
+    "from": "filtered",
+    "value": 6726,
+    "log": 8.813735892,
+    "range": "0.65-0.70"
+  },
+  {
+    "from": "filtered",
+    "value": 8871,
+    "log": 9.090542809,
+    "range": "0.70-0.75"
+  },
+  {
+    "from": "filtered",
+    "value": 13029,
+    "log": 9.474932921,
+    "range": "0.75-0.80"
+  },
+  {
+    "from": "filtered",
+    "value": 15939,
+    "log": 9.676524215,
+    "range": "0.80-0.85"
+  },
+  {
+    "from": "filtered",
+    "value": 9659,
+    "log": 9.175645402,
+    "range": "0.85-0.90"
+  },
+  {
+    "from": "filtered",
+    "value": 5778,
+    "log": 8.661812881,
+    "range": "0.90-0.95"
+  }
+]

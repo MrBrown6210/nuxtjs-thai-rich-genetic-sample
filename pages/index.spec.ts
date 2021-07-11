@@ -7,7 +7,7 @@ describe('Index Page', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(Home, {
-      stubs: ['vcf-varient']
+      stubs: ['varient-chart', 'allele-chart', 'missingness-chart']
     })
   })
 

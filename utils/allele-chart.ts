@@ -1,4 +1,4 @@
-import { Varient, AlleleChartOption } from "~/types/vcf"
+import { Varient, AlleleChartOption, Allele } from "~/types/vcf"
 
 export class AlleleChart {
   option: AlleleChartOption
@@ -8,14 +8,17 @@ export class AlleleChart {
       tooltip: {},
       dataset: {
           source: [
-              ['type', 'Original', 'Filtered'],
+              ['Range', 'Original', 'Filtered'],
               ['Matcha Latte', 43.3, 85.8, 93.7],
               ['Milk Tea', 83.1, 73.4, 55.1],
           ]
       },
-      xAxis: {type: 'category'},
+      xAxis: {
+        type: 'category',
+        axisLabel: { interval: 0, rotate: 90 },
+      },
       yAxis: {
-        name: 'Numbrt of variants',
+        name: 'log(Numbrt of variants)',
         nameLocation: 'middle',
         nameGap: 80
       },
@@ -28,14 +31,23 @@ export class AlleleChart {
     }
   }
 
-  updateVarients(varients: Varient[]) {
+  updateVarients(alleles: Allele[]) {
     this.option.dataset.source = []
 
-    const heads = ['type', 'Original', 'Filtered']
+    const heads = ['Range', 'Original', 'Filtered']
     this.option.dataset.source.push(heads)
 
-    varients.forEach(varient => {
-      const data = [varient.type, varient.original, varient.filtered]
+    const mapper: { [key: string]: any; } = {};
+    alleles.forEach(allele => {
+      if (!mapper[allele.range]) {
+        mapper[allele.range] = {}
+      }
+      mapper[allele.range][allele.from] = allele.log
+    })
+
+    Object.keys(mapper).forEach(range => {
+      const { original, filtered } = mapper[range]
+      const data = [range, original, filtered]
       this.option.dataset.source.push(data)
     })
   }

@@ -1,28 +1,31 @@
 import { rest } from 'msw'
-
+import varientDashboardJSON from './fixtures/varients-dashboard.json'
+import allelesDashboardJSON from './fixtures/alleles-dashboard.json'
+import missingnessOriginalDashboardJSON from './fixtures/missingness-original-dashboard.json'
+import missingnessFilteredDashboardJSON from './fixtures/missingness-filtered-dashboard.json'
 const API_URL = process.env.API_URL
 
 export const handlers = [
   rest.get(`${API_URL}/varients/dashboard`, (req, res, ctx) => {
     return res(
       ctx.delay(),
-      ctx.json([
-        {
-          type: 'SNPs',
-          original: 6819,
-          filtered: 12481,
-        },
-        {
-          type: 'detection',
-          original: 5128,
-          filtered: 4091,
-        },
-        {
-          type: 'insertion',
-          original: 10049,
-          filtered: 5918,
-        }
-      ])
+      ctx.json(varientDashboardJSON)
+    )
+  }),
+  rest.get(`${API_URL}/alleles/dashboard`, (req, res, ctx) => {
+    return res(
+      ctx.delay(),
+      ctx.json(allelesDashboardJSON)
+    )
+  }),
+  rest.get(`${API_URL}/missingness/dashboard`, (req, res, ctx) => {
+    const type = req.url.searchParams.get('type')
+    let data = [...missingnessOriginalDashboardJSON, ...missingnessFilteredDashboardJSON]
+    if (type === 'original') data = missingnessOriginalDashboardJSON
+    if (type === 'filtered') data = missingnessFilteredDashboardJSON
+    return res(
+      ctx.delay(),
+      ctx.json(data)
     )
   })
 ]

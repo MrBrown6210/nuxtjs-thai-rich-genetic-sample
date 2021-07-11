@@ -12,6 +12,7 @@ import { VarientChart } from '@/utils/varient-chart'
 import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent ({
+  name: 'varient-chart',
   components: {
     VChart
   },

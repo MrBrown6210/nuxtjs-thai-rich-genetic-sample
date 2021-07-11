@@ -23,6 +23,13 @@ export interface VarientChartOption {
   }[];
 }
 
+export interface Allele {
+  from: string
+  value: number
+  log: number
+  range: string
+}
+
 export interface AlleleChartOption {
   title?: {
       text: string;
@@ -33,11 +40,30 @@ export interface AlleleChartOption {
   dataset: {
       source: (string | number)[][];
   };
-  xAxis: {
-      type: string;
-  };
+  xAxis: {};
   yAxis: {};
   series: {
       type: string;
   }[];
+}
+
+export interface Missingness {
+  type: string
+  fraction: number
+  varient: number
+}
+
+export interface MissingnessChartOption {
+  title?: {
+      text: string;
+      left: string;
+  };
+  legend: {};
+  tooltip: {};
+  dataset: {
+      source: (string | number)[][];
+  };
+  xAxis: {};
+  yAxis: {};
+  series: {}[];
 }

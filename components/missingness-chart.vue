@@ -7,21 +7,28 @@
 <script lang="ts">
 
 import VChart from "vue-echarts";
-import { Allele, Varient } from '@/types/vcf'
-import { AlleleChart } from '@/utils/allele-chart'
+import { Allele, Missingness, Varient } from '@/types/vcf'
+import { MissingnessChart, missingnessChartStyle } from '@/utils/missingness-chart'
 import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent ({
   components: {
     VChart
   },
-  setup() {
+  props: {
+    type: {
+      type: String,
+      require: true
+    }
+  },
+  setup(props) {
     const { $axios } = useContext()
-    const alleleChart = new AlleleChart()
+    const _type = props.type as missingnessChartStyle
+    const alleleChart = new MissingnessChart(_type)
     const option = ref(alleleChart.option)
 
     useFetch(async () => {
-      const data = await $axios.$get<Allele[]>('alleles/dashboard')
+      const data = await $axios.$get<Missingness[]>(`missingness/dashboard?type=${props.type}`)
       alleleChart.updateVarients(data)
     })
 

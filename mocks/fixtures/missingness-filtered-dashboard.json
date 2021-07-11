@@ -1,0 +1,52 @@
+[
+  {
+    "type": "filtered",
+    "fraction": 0.1,
+    "varient": 23359
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.2,
+    "varient": 36552
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.3,
+    "varient": 44958
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.4,
+    "varient": 47232
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.5,
+    "varient": 33423
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.6,
+    "varient": 33350
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.7,
+    "varient": 38995
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.8,
+    "varient": 1160
+  },
+  {
+    "type": "filtered",
+    "fraction": 0.9,
+    "varient": 0
+  },
+  {
+    "type": "filtered",
+    "fraction": 1,
+    "varient": 0
+  }
+]
