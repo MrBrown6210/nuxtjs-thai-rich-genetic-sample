@@ -1,0 +1,5 @@
+{
+  "testFiles": "**/*.spec.ts",
+  "trashAssetsBeforeRuns": true,
+  "baseUrl": "http://localhost:5000"
+}

@@ -13,6 +13,11 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  server: {
+    host: '0.0.0.0',
+    port: process.env.PORT || 5000
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
   ssr: true,
@@ -55,6 +60,7 @@ export default {
     ],
   },
   env: {
+    PORT: process.env.PORT || 5000,
     API_URL: process.env.API_URL || 'http://msw.local',
     DISABLED_MOCK: process.env.API_URL ? true : false
   }

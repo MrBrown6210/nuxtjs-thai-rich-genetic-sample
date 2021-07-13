@@ -9,7 +9,7 @@
 import VChart from "vue-echarts";
 import { Allele, Varient } from '@/types/vcf'
 import { AlleleChart } from '@/utils/allele-chart'
-import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent ({
   components: {
